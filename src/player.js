@@ -4,6 +4,7 @@ class Player{
         this.name = name;
         this.winCount = 0;
         this.gameLost = false;
+        // this.token = 
     }
 
     addWins(){
