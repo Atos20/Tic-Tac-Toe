@@ -1,3 +1,3 @@
-var game = new Game()
-
-console.log(game.printBoard())
+var board = ['', '' , '', '', '', '', '', '', '']
+var game = new Game(board )
+console.log(game.printBoard( ))
