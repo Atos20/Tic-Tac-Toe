@@ -5,7 +5,6 @@ class Game{
         this.player1 = new Player ('1');//tested
         this.player2 = new Player ('2');// tested
         this.gameBoard = boardState//=> to check for the token being placed by the player   
-        this.turns = true; //tested
         this.courrentTurn;
         this.announcement = ''; //tested => will display the title
         // this.whoseTurn = this.player1;
@@ -103,7 +102,7 @@ class Game{
         }
     }
     
-    updateAnnouncement(player){//needs to make use of a paramter so it can interpolate the player
+    updateHeader(player){//needs to make use of a paramter so it can interpolate the player
        if (checkForVictories()){
            this.announcement = `It's ${player.name} turn`
            return this.announcement;
@@ -111,10 +110,11 @@ class Game{
     }
 
     insertToken(player, token, position){
-        if (position > 8 || this.gameBoard[position]){//=> it checks for two conditions 
+        if (position > 8 || this.gameBoard[position] > 8 || this.gameBoard[position] !== ''){//=> it checks for two conditions 
             return false;
         } else {
             this.gameBoard[position] = token
+            this.findCourrentTurn(player)
             console.log('player ' + this.findCourrentTurn(player) + 'has placed a ' + token + 'at position ' + this.gameBoard[position])
             this.printBoard()
             return true;
@@ -127,10 +127,8 @@ class Game{
         } else {
             return this.player2.id
         }
-        // this.turns = !this.turns;
-        // this.turns ? this.courrentTurn = this.player1 : this.courrentTurn = this.player2;
-        // // console.log(this.courrentTurn)
     }
+
 
     findWinner(player){//The winner will be founf and then the winCount will incease
         var winner;
