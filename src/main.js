@@ -1,4 +1,4 @@
-var board = ['x', '', 'x', 'o', 'x', '', 'x', 'o', 'x']
+var board = ['🥕', '', '🐔', '🥕', '🐔', '🥕', '🐔', '🥕', '🥕']
 var game = new Game(board)
 console.log(game.printBoard())
 
