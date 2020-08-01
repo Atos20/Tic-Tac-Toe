@@ -6,7 +6,7 @@ class Game{
         this.player2 = new Player ('2');// tested
         this.gameBoard = boardState//=> to check for the token being placed by the player   
         this.turns = true; //tested
-        this.courrentTurn = 'player1';
+        this.courrentTurn;
         this.announcement = ''; //tested => will display the title
         // this.whoseTurn = this.player1;
         this.possibleWinnings = [
@@ -33,12 +33,6 @@ class Game{
         console.log('%c' + formattedString, 'color: red ;font-size:20px');
     }
 
-    takeTurn() { 
-        this.turns = !this.turns;
-        this.turns ? this.courrentTurn = 'player1' : this.courrentTurn = 'player2';
-        // console.log(this.courrentTurn)
-    }
-
     checkForReadiness(){ //check for game readiness
         return this.gameBoard.every(function (cell) {
             const isEmpty = cell === ''
@@ -46,7 +40,7 @@ class Game{
         })
     }
 
-    checkForDraws() { //check for draw, if it is full it is a draw
+    checkForDraws() { //check for draws, if it is full it is a draw
         return this.gameBoard.every((cell) => {//had to use arrow functioning 
             this.announcement = 'It\'s a draw!'
             const isFull = cell !== ''
@@ -108,14 +102,43 @@ class Game{
             return;
         }
     }
-
-
+    
     updateAnnouncement(player){//needs to make use of a paramter so it can interpolate the player
        if (checkForVictories()){
            this.announcement = `It's ${player.name} turn`
            return this.announcement;
        }
     }
+
+    insertToken(player, token, position){
+        if (position > 8){
+            return false;
+        } else {
+            this.gameBoard[position] = token
+            console.log('player ' + player.id + 'has placed a ' + token + 'at position ' + this.gameBoard[position])
+            this.printBoard()
+            return true;
+        }
+    }
+
+    findCourrentTurn(player) { 
+        this.turns = !this.turns;
+        this.turns ? this.courrentTurn = this.player1 : this.courrentTurn = this.player2;
+        // console.log(this.courrentTurn)
+    }
+
+    findWinner(player){//The winner will be founf and then the winCount will incease
+        var winner;
+        console.log(player)
+        if (player.lostGame === true){
+
+        }
+        //should find who has got a victory
+        
+        //once it finds the winner, it invokes the method that increases the win count
+
+    }
+
 
 
     resetGame(){
@@ -125,8 +148,6 @@ class Game{
             //this.announcement 
             this.announcement = 'Game will restart in 5 sec.'
             //get the information from estorage 
-            
-            // it clears out the board
 
         //, 5000)
         return this.announcement;
