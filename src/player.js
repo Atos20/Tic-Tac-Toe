@@ -3,8 +3,7 @@ class Player{
         this.id = id;
         this.name = name;
         this.winCount = 0;
-        this.gameLost = false;
-        // this.token = 
+        this.gameLost = false; 
     }
 
     addWins(){
@@ -15,12 +14,12 @@ class Player{
         this.gameLost = !this.gameLost
     }
 
-    saveWinsToStorage(){
-
+    saveWinsToStorage(player){
+        localStorage.setItem(JSON.stringify(player.name, this.winCount))
     }
 
-    retrieveWinsFromStorage(){
-        
+    retrieveWinsFromStorage(player){
+        JSON.parse(localStorage.getItem(player.name))
     }
 }
 
