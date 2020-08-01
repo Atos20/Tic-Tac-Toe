@@ -15,11 +15,11 @@ class Player{
     }
 
     saveWinsToStorage(player){
-        localStorage.setItem(JSON.stringify(player.name, this.winCount))
+        localStorage.setItem(JSON.stringify(player, this.winCount))
     }
 
     retrieveWinsFromStorage(player){
-        JSON.parse(localStorage.getItem(player.name))
+        JSON.parse(localStorage.getItem(player))
     }
 }
 

@@ -1,14 +1,14 @@
 // const Player = require('../src/player');
 
 class Game{
-    constructor(stateBoard) {
+    constructor(boardState) {
         this.player1 = new Player ('1');//tested
         this.player2 = new Player ('2');// tested
+        this.gameBoard = boardState//=> to check for the token being placed by the player   
         this.turns = true; //tested
         this.courrentTurn = 'player1';
         this.announcement = ''; //tested => will display the title
         // this.whoseTurn = this.player1;
-        this.gameBoard = stateBoard//=> to check for the token being placed by the player   //=> [0] topleft position
         this.possibleWinnings = [
             [0, 1, 2], //checks for the top row
             [3, 4, 5], //checks for the middle row
@@ -45,21 +45,28 @@ class Game{
     }
 
 
-    checkReadiness(){
+    checkForReadiness(){
         //check for game readiness
-        for (var i = 0; i < this.gameBoard.length; i++){
-            console.log(this.gameBoard[i])
-            if (!this.gameBoard[i]){ //An empty string is a falsy value
-                console.log('check if the board is empty')
-                return true;
-                //I can use this boolean to handle the logic of the game
-            }
-        }
+        return this.gameBoard.every(function (cell) {
+            const isEmpty = cell === ''
+            return isEmpty
+        })
     }
 
-    checkForDraws() {
+             
 
+    checkForDraws() {
         //check for draw, if it is full it is a draw
+        return this.gameBoard.every(function (cell) {
+            const isFull= cell !== ''
+            return isFull
+        })
+    }
+
+    checkForVictories(){
+        //check for readiness
+        this.checkForReadiness()
+        //
     }
         //check for win => if it meets one of the conditions is a win
 
@@ -75,7 +82,7 @@ class Game{
 
         //, 5000)
     }
-
-
 }
+
+
 // module.exports = Game;
