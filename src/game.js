@@ -4,7 +4,7 @@ class Game{
     constructor(stateBoard) {
         this.player1 = new Player ('1');//tested
         this.player2 = new Player ('2');// tested
-        this.turns = 0; //tested
+        this.turns = true; //tested
         this.courrentTurn = 'player1';
         this.announcement = ''; //tested => will display the title
         this.whoseTurn = this.player1;
@@ -30,18 +30,31 @@ class Game{
                 if(index < 8) formattedString += `\n\u2015\u2015\u2015 \u2015\u2015\u2015 \u2015\u2015\u2015\n`;
             }
         });
-
         console.log('%c' + formattedString, 'color: red ;font-size:20px');
+        console.log(`\n\u2015\u2015\u2015 \u2015\u2015\u2015 \u2015\u2015\u2015\n`)
     }
 
-
-    checkForWin(){
-        
+    takeTurn() {
+        this.turns = !this.turns; 
+        if (this.turns){
+            this.courrentTurn = 'player1';
+        } else {
+            this.courrentTurn = 'player2';
+        }
     }
+
 
     updateAnnouncement(player){//needs to make use of a paramter so it can interpolate the player
         this.announcement = `It's ${player.name} turn`
         return this.announcement;
+    }
+
+    resetGame(){
+        //setTimeOut(
+            //here it goes the function that resets the game
+            // it clears out the board
+
+        //, 5000)
     }
 
 
