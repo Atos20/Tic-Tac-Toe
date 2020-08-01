@@ -44,7 +44,6 @@ class Game{
         console.log(this.courrentTurn)
     }
 
-
     checkForReadiness(){
         //check for game readiness
         return this.gameBoard.every(function (cell) {
@@ -52,8 +51,6 @@ class Game{
             return isEmpty
         })
     }
-
-             
 
     checkForDraws() {
         //check for draw, if it is full it is a draw
@@ -64,11 +61,47 @@ class Game{
     }
 
     checkForVictories(){
-        //check for readiness
-        this.checkForReadiness()
-        //
-    }
+        //check for readiness???
+        var topLeft = this.gameBoard[0];
+        var topCenter = this.gameBoard[1];
+        var topRight = this.gameBoard[2];
+        var centerLeft = this.gameBoard[3];
+        var centerCenter= this.gameBoard[4];
+        var centerRigth = this.gameBoard[5];
+        var buttomLeft = this.gameBoard[6];
+        var buttomCenter = this.gameBoard[7];
+        var buttomRigth = this.gameBoard[8];
+        
         //check for win => if it meets one of the conditions is a win
+        if (topLeft === topCenter && topLeft === topRight){
+            console.log('the winner is =>', topLeft)
+            return;
+        }
+        if (centerLeft === centerCenter && centerLeft === centerRigth){
+            console.log('the winner is => ',centerLeft)
+            return;
+        }
+        if (buttomLeft === buttomCenter && buttomLeft === buttomRigth){
+            console.log('the winner is => ', buttomLeft)
+            return;
+        }
+        if (centerLeft === centerCenter && centerLeft === centerRigth){
+            console.log('the winner is =>', centerLeft)
+            return;
+        }
+        if (buttomLeft === buttomCenter && buttomLeft === buttomRight){
+            console.log('the winner is =>', buttomLeft)
+            return;
+        }
+        if (topLeft  === centerCenter && topleft === buttomRigth){
+            console.log('the winner is => ', centerCenter )
+            return;
+        }
+        if (topRight === centerCenter && topRight === buttomLeft){
+            console.log('the winner is =>', centerCenter)
+        }
+        return;
+    }
 
     updateAnnouncement(player){//needs to make use of a paramter so it can interpolate the player
         this.announcement = `It's ${player.name} turn`
