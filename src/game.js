@@ -34,13 +34,10 @@ class Game{
         console.log(`\n\u2015\u2015\u2015 \u2015\u2015\u2015 \u2015\u2015\u2015\n`)
     }
 
-    takeTurn() {
-        this.turns = !this.turns; 
-        if (this.turns === false){
-            this.courrentTurn = 'player1';
-        } else {
-            this.courrentTurn = 'player2';
-        }
+    takeTurn() { //refactor this using a ternerary
+        
+        this.turns = !this.turns;
+        this.turns ? this.courrentTurn = 'player1' : this.courrentTurn = 'player2';
         console.log(this.courrentTurn)
     }
 
@@ -75,45 +72,61 @@ class Game{
         //check for win => if it meets one of the conditions is a win
         if (topLeft === topCenter && topLeft === topRight){
             console.log('the winner is =>', topLeft)
+            //invoke resetGame
             return;
         }
         if (centerLeft === centerCenter && centerLeft === centerRigth){
             console.log('the winner is => ',centerLeft)
+            //invoke resetGame
             return;
         }
         if (buttomLeft === buttomCenter && buttomLeft === buttomRigth){
             console.log('the winner is => ', buttomLeft)
+            //invoke resetGame
             return;
         }
         if (centerLeft === centerCenter && centerLeft === centerRigth){
             console.log('the winner is =>', centerLeft)
+            //invoke resetGame
             return;
         }
         if (buttomLeft === buttomCenter && buttomLeft === buttomRight){
             console.log('the winner is =>', buttomLeft)
+            //invoke resetGame
             return;
         }
         if (topLeft  === centerCenter && topleft === buttomRigth){
             console.log('the winner is => ', centerCenter )
+            //invoke resetGame
             return;
         }
         if (topRight === centerCenter && topRight === buttomLeft){
             console.log('the winner is =>', centerCenter)
+            //invoke resetGame
+            return;
         }
-        return;
     }
 
     updateAnnouncement(player){//needs to make use of a paramter so it can interpolate the player
-        this.announcement = `It's ${player.name} turn`
-        return this.announcement;
+       if (checkForVictories()){
+           this.announcement = `It's ${player.name} turn`
+           return this.announcement;
+       }
     }
+
 
     resetGame(){
         //setTimeOut(
-            //here it goes the function that resets the game
+            //reset the board
+            this.gameBoard = ['', '', '', '', '', '', '', '', ''];
+            //this.announcement 
+            this.announcement = 'Game will restart in 5 sec.'
+            //get the information from estorage 
+            
             // it clears out the board
 
         //, 5000)
+        return this.announcement;
     }
 }
 
