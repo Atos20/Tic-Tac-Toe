@@ -1,6 +1,6 @@
-var board = ['', '' , '', '', '', '', '', '', '']
-var game = new Game(board )
-console.log(game.printBoard( ))
+var board = ['x', '', 'x', 'o', 'x', '', 'x', 'o', 'x']
+var game = new Game(board)
+console.log(game.printBoard())
 
 
   // placeToken(player){
@@ -10,3 +10,10 @@ console.log(game.printBoard( ))
 
     //     //being able to provide tokens to the the board => this function willbe ablo to change the elements on the board
     // }
+
+    //handleWin(){
+        //one of the players has succesfully met one of the winnng conditions
+        //when one of the player has met one of the winnig condition
+        // the other player cannot place a token on the grid
+        //
+    //}
