@@ -111,20 +111,25 @@ class Game{
     }
 
     insertToken(player, token, position){
-        if (position > 8){
+        if (position > 8 || this.gameBoard[position]){//=> it checks for two conditions 
             return false;
         } else {
             this.gameBoard[position] = token
-            console.log('player ' + player.id + 'has placed a ' + token + 'at position ' + this.gameBoard[position])
+            console.log('player ' + this.findCourrentTurn(player) + 'has placed a ' + token + 'at position ' + this.gameBoard[position])
             this.printBoard()
             return true;
         }
     }
 
     findCourrentTurn(player) { 
-        this.turns = !this.turns;
-        this.turns ? this.courrentTurn = this.player1 : this.courrentTurn = this.player2;
-        // console.log(this.courrentTurn)
+        if (player === this.player1){
+            return this.player1.id //=> remove id's these are just for testing 
+        } else {
+            return this.player2.id
+        }
+        // this.turns = !this.turns;
+        // this.turns ? this.courrentTurn = this.player1 : this.courrentTurn = this.player2;
+        // // console.log(this.courrentTurn)
     }
 
     findWinner(player){//The winner will be founf and then the winCount will incease
