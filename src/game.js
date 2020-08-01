@@ -7,7 +7,7 @@ class Game{
         this.turns = true; //tested
         this.courrentTurn = 'player1';
         this.announcement = ''; //tested => will display the title
-        this.whoseTurn = this.player1;
+        // this.whoseTurn = this.player1;
         this.gameBoard = stateBoard//=> to check for the token being placed by the player   //=> [0] topleft position
         this.possibleWinnings = [
             [0, 1, 2], //checks for the top row
@@ -36,13 +36,27 @@ class Game{
 
     takeTurn() {
         this.turns = !this.turns; 
-        if (this.turns){
+        if (this.turns === false){
             this.courrentTurn = 'player1';
         } else {
             this.courrentTurn = 'player2';
         }
+        console.log(this.courrentTurn)
     }
 
+
+    gameStatus(){
+        //check for game readiness
+        for (var i = 0; i < this.gameBoard.length; i++){
+            console.log(this.gameBoard[i] === '')
+            if (this.gameBoard[i] === ''){
+                return true;
+                //I can use this boolean to handle the logic of the game
+            }
+        }
+        //check for draw, if it is full it is a draw
+        //check for win => if it meets one of the conditions is a win
+    }
 
     updateAnnouncement(player){//needs to make use of a paramter so it can interpolate the player
         this.announcement = `It's ${player.name} turn`
