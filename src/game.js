@@ -25,17 +25,17 @@ class Game{
         player.addWins()
         player.saveWinsToStorage()
         // this.disableGame()
-    }
-
-    checkWin(){
-        if(this.gameTurns >= 5){
-            this.checkForVictory()
-        }
         if(!this.isGameActive){
             setTimeout(function (){
                 alert('5 seconds')
                 // this.resetGame()
             }, 3000);
+        }
+    }
+
+    checkWin(){
+        if(this.gameTurns >= 5){
+            this.checkForVictory()
         }
     }
 
@@ -145,25 +145,9 @@ class Game{
             this.gameBoard[position] = '🌚' ;
         }
         this.printBoard() //display the updated board
-        this.checkWin()
+        this.checkWin() //check for a winnning condition
     }
     
-    
-
-    findWinner(){//The winner will be founf and then the winCount will incease
-        var winner; //=> p1 or p2 
-        console.log(player)
-        //should find who has got a victory
-        // if (player.lostGame){//=> true
-            
-        // }   
-        // winner = player
-        //once it finds the winner, it invokes the method that increases the win count for that specific
-        // player.addWins()//=>
-        // player.saveWinsToStorage()
-        // how to save to LS the win
-    }
-
     resetGame(){
             //reset the board
             console.log('after 5 sec')
