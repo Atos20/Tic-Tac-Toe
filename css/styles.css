@@ -1,0 +1,116 @@
+body {
+    box-sizing: border-box;
+    font-family: 'Permanent Marker', cursive;
+  }
+
+  :root{
+      --bars-color: rgb(233, 195, 114);
+      --background-color:  rgb(94, 182, 156);
+      --players-background: rgb(221, 41, 152);
+      --section-color: rgba(216, 199, 42, 0.815);
+  }
+
+
+  .main-container{
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      text-align: center;
+      font-size: 2em;
+      /* padding: 1% 1% 1% 1%; */
+  }
+
+  .center-section{
+    background-color: var( --background-color);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 3%;
+    width: 70vh;
+  }
+
+  .game-name{
+    color: cornsilk;
+    font-size: 65px;
+  }
+
+  .player1-name, .player2-name, .p1-win-count, .p2-win-count{
+      margin-bottom: 4%;
+  }
+  .container{
+    align-self: center;
+    border-radius: 25px;
+    padding: 3%;
+    margin: 5%;
+}
+.game-board{
+    background: var(--bars-color);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr );
+    grid-template-rows: repeat(3, 1fr );
+    grid-gap: 6px;
+    justify-self: center;
+    justify-items: center;
+
+}
+
+.cell {
+
+    cursor: pointer;
+    font-size: 2em;
+    background-color: var( --background-color);
+    height: 90px;
+    width: 90px;
+}
+
+.left-section,  .rigth-section{
+    background-color: var( --section-color);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    padding: 6% 1% 0% 1%;
+    width: 35%;
+}
+
+  .p1-games, .p2-games{
+      display: grid;
+      background-color: var( --players-background);
+      height: 85vh;
+      grid-template-columns: repeat(3, 1fr );
+      grid-template-rows: repeat(6, 1fr );
+      overflow: scroll;
+      margin: 2% 1% 2% 1%;
+      /* width: 60vh; */
+  }
+
+  .main-header{
+    padding: 6% 1% 8% 1%;
+}
+
+ .player-container{
+    border-radius: 3px;
+    background-color: cornflowerblue;
+    /* padding: 5%; */
+    margin: 7%;
+    /* height: 100px;
+    width: 100px; */
+}
+
+.mini-game-board{
+    background: var( --bars-color);
+    display: grid;
+    grid-template-columns: repeat(3, 30px);
+    grid-template-rows: repeat(3, 30px);
+    grid-gap: 1px;
+    width: 93px;
+    align-content: center;
+    
+}
+.min-cell {
+    font-size: 13px;
+    background-color: var( --background-color);
+    height: 25px;
+    width: 25px;
+    margin-top: 3px;
+}
