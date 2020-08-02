@@ -43,30 +43,13 @@ body {
 }
 
 .cell {
-  
+
     cursor: pointer;
     font-size: 2em;
     background-color: var( --background-color);
     height: 100px;
     width: 100px;
 }
-
-/* .one, .two, .three{
-    border-top: none;
-} 
-
-.seven, .eigth, .nine{
-    border-bottom: none;
-} 
-
-.one, .four, .seven{
-    border-left: none;
-  
-} 
-
-.three, .six, .nine{
-    border-right: none;
-}  */
 
 .left-section,  .rigth-section{
     background-color: coral;
@@ -104,4 +87,27 @@ body {
     font-size: 10px;
  }
 
- 
+ .player-container{
+    border-radius: 3px;
+    background-color: cornflowerblue;
+    padding: 3%;
+    margin: 5%;
+    /* height: 100px;
+    width: 100px; */
+}
+
+.mini-game-board{
+    background: var( --font-color);
+    display: grid;
+    grid-template-columns: repeat(3, 28px);
+    grid-template-rows: repeat(3, 28px);
+    grid-gap: 1px;
+
+}
+.min-cell {
+    font-size: 15px;
+    background-color: var( --background-color);
+    height: 25px;
+    width: 25px;
+    justify-self: end;
+}
