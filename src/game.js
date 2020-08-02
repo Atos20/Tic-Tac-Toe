@@ -20,15 +20,20 @@ class Game{
         ];
     }
 
+    deactivateGame(){
+        this.isGameActive = !this.isGameActive;
+    }
+
     declareWinner(player){
-        console.log('the winner is ', player.name)
+        this.announcement = `${player.name} Wins`
+        console.log(this.announcement)
         player.addWins()
         player.saveWinsToStorage()
         // this.disableGame()
         if(!this.isGameActive){
             setTimeout(function (){
                 alert('5 seconds')
-                // this.resetGame()
+                this.resetGame()
             }, 3000);
         }
     }
@@ -41,6 +46,7 @@ class Game{
 
     // game Logic
     checkForVictory(){
+        this.checkForDraws() 
         var currentTurn = this.findCurrentTurn()
         for (var i = 0; i < this.winningScenarios.length; i++) {
             for(var j = 0; j < this.winningScenarios[i].length; j++){
@@ -48,35 +54,25 @@ class Game{
                 var secondIndex = this.gameBoard[this.winningScenarios[i][j + 1]]
                 var thirdIndex = this.gameBoard[this.winningScenarios[i][j + 2]]
                 if(winningIndex === secondIndex && secondIndex === thirdIndex && winningIndex !== ''){
+                    this.deactivateGame()
                     this.declareWinner(currentTurn)
                     return true
-                } 
+                }
             }
         }
-    }
-    // checkForVictory(){
-    //     var firstToken = this.gameBoard[this.winningScenarios[i][j]]
-    //     var secondToken = this.gameBoard[winningIndex]
-    //     var thirdToken = this.gameBoard[winningIndex]
-    //     console.log('first', firstToken )
-    //     console.log('second', secondToken )
-    //     console.log('third', thirdToken )
-    //     if (firstToken === secondToken && secondToken === thirdToken){
-    //         console.log( this.findCurrentTurn().name, 'has won')
-    //         // this.resetGame();
-    //         return true
-    //     } else {
-    //         return false
-    //     }
-    // }      
+    }     
 
     checkForDraws() { //check for draws, if it is full it is a draw
-        return this.gameBoard.includes('') ? false : true
+        if (!this.gameBoard.includes('') ){
+            this.announcement = 'It is a DRAW';
+            console.log(this.announcement )
+        }
+
     }
 
-    checkForReadiness(){ //check for game readiness
-        return !this.gameBoard.includes('') ? false : true
-    }
+    // checkForReadiness(){ //check for game readiness
+    //     return !this.gameBoard.includes('') ? false : true
+    // }
 
     findCurrentTurn() { 
         return this.gameTurns %2 === 0 ? this.player2 : this.player1
@@ -133,7 +129,7 @@ class Game{
     insertToken(position){
         this.findCurrentTurn()
         // console.log(this.findCurrentTurn())
-        if (this.gameBoard[position] !== ''){ //=> makes sure not to over ride a position
+        if (this.gameBoard[position] !== '' ){ //=> makes sure not to over ride a position
             return false;
         } 
         if (this.gameBoard[position] === '' && this.findCurrentTurn() === this.player2) {
@@ -150,10 +146,11 @@ class Game{
     
     resetGame(){
             //reset the board
-            console.log('after 5 sec')
-            this.gameBoard = ['', '', '', '', '', '', '', '', ''];
+            var newBoard = ['', '', '', '', '', '', '', '', '']
+            this.gameBoard = newBoard;
             //this.announcement 
             this.announcement = 'Game will restart in 5 sec.'
+            console.log(this.announcemen)
             //get the information from estorage 
             this.printBoard()
         return this.announcement;
