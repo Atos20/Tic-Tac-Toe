@@ -1,0 +1,107 @@
+body {
+    box-sizing: border-box;
+    font-family: 'Permanent Marker', cursive;
+  }
+
+  :root{
+      --font-color: rgb(8, 155, 155);
+      --background-color:  rgb(94, 182, 156);
+  }
+
+  .main-container{
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      text-align: center;
+      font-size: 2em;
+      /* padding: 1% 1% 1% 1%; */
+  }
+
+  .center-section{
+    background-color: var( --background-color);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 6% 1% 0% 1%;
+    width: 35%;
+  }
+
+  .container{
+    align-self: center;
+    border-radius: 25px;
+    /* background-color: rgb(173, 163, 19); */
+    padding: 3%;
+    margin: 5%;
+}
+.game-board{
+    background: var( --font-color);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr );
+    grid-template-rows: repeat(3, 1fr );
+    grid-gap: 6px;
+
+}
+
+.cell {
+  
+    cursor: pointer;
+    font-size: 2em;
+    background-color: var( --background-color);
+    height: 100px;
+    width: 100px;
+}
+
+/* .one, .two, .three{
+    border-top: none;
+} 
+
+.seven, .eigth, .nine{
+    border-bottom: none;
+} 
+
+.one, .four, .seven{
+    border-left: none;
+  
+} 
+
+.three, .six, .nine{
+    border-right: none;
+}  */
+
+.left-section,  .rigth-section{
+    background-color: coral;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    padding: 6% 1% 0% 1%;
+    width: 35%;
+}
+
+  .p1-games, .p2-games{
+      display: grid;
+      background-color: cornflowerblue;
+      height: 85vh;
+      grid-template-columns: repeat(3, 1fr );
+      grid-template-rows: repeat(6, 1fr );
+      overflow: scroll;
+      margin: 5%;
+  }
+
+  .main-header{
+    padding: 6% 1% 8% 1%;
+}
+
+ .mini-board {
+    display: grid;
+    align-self: center;
+    grid-template-columns: repeat(3, 32px );
+    grid-template-rows: repeat(3, 35px);
+    background-color: rgb(252, 245, 157);
+    height: 16vh;
+    width: 15vh;
+    margin: 0%;
+    font-size: 10px;
+ }
+
+ 
