@@ -7,6 +7,7 @@ class Game{
         this.gameBoard = boardState//=> to check for the token being placed by the player   
         this.gameTurns = 0;
         this.announcement = ''; //tested => will display the title
+        this.isGameActive = true;
         this.winningScenarios = [
             [0, 1, 2], //checks for the top row
             [3, 4, 5], //checks for the middle row
@@ -19,15 +20,35 @@ class Game{
         ];
     }
 
+    declareWinner(player){
+        console.log('the winner is ', player.name)
+        player.addWins()
+        player.saveWinsToStorage()
+        // this.disableGame()
+    }
+
+    checkWin(){
+        if(this.gameTurns >= 5){
+            this.checkForVictory()
+        }
+        if(!this.isGameActive){
+            setTimeout(function (){
+                alert('5 seconds')
+                // this.resetGame()
+            }, 3000);
+        }
+    }
+
     // game Logic
     checkForVictory(){
+        var currentTurn = this.findCurrentTurn()
         for (var i = 0; i < this.winningScenarios.length; i++) {
             for(var j = 0; j < this.winningScenarios[i].length; j++){
                 var winningIndex = this.gameBoard[this.winningScenarios[i][j]]
-                var secondIndex = this.gameBoard[this.winningScenarios[i][j +1]]
-                var thirdIndex = this.gameBoard[this.winningScenarios[i][j +2]]
+                var secondIndex = this.gameBoard[this.winningScenarios[i][j + 1]]
+                var thirdIndex = this.gameBoard[this.winningScenarios[i][j + 2]]
                 if(winningIndex === secondIndex && secondIndex === thirdIndex && winningIndex !== ''){
-                    console.log('hi')
+                    this.declareWinner(currentTurn)
                     return true
                 } 
             }
@@ -101,14 +122,6 @@ class Game{
             return false;
         }
     }
-    
-    checkWin(){
-        //checking=> boolean
-            this.checkForVictory()
-
-       //loop over the arrays => possible winning combinations
-
-    }
 
     updateHeader(player){//needs to make use of a paramter so it can interpolate the player
        if (checkForVictories()){
@@ -118,7 +131,6 @@ class Game{
     }
 
     insertToken(position){
-        var isGameActive = true
         this.findCurrentTurn()
         // console.log(this.findCurrentTurn())
         if (this.gameBoard[position] !== ''){ //=> makes sure not to over ride a position
@@ -132,9 +144,6 @@ class Game{
             this.gameTurns++
             this.gameBoard[position] = '🌚' ;
         }
-        // if (checkForVictory()){
-
-        // }
         this.printBoard() //display the updated board
         this.checkWin()
     }
