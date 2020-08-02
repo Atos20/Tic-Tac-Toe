@@ -5,11 +5,10 @@ class Game{
         this.player1 = new Player ('1');//tested
         this.player2 = new Player ('2');// tested
         this.gameBoard = boardState//=> to check for the token being placed by the player   
-        this.gameTurns = 0
-        this.currentTurn;
+        this.gameTurns = 0;
+        this.isGameActive = true;
         this.announcement = ''; //tested => will display the title
-        // this.whoseTurn = this.player1;
-        this.possibleWinnings = [
+        this.winningScenarios = [
             [0, 1, 2], //checks for the top row
             [3, 4, 5], //checks for the middle row
             [6, 7, 8], // checks for the botton row
@@ -19,25 +18,24 @@ class Game{
             [0, 4, 8], // checks 1st cross
             [2, 4, 6]  // checks 2nd cross
         ];
-    }
-    
-    printBoard() {
-        let formattedString = '';
-        this.gameBoard.forEach((cell, index) => {
-            formattedString += cell ? ` ${cell} |` : '   |';
-            if((index + 1) % 3 == 0)  {
-                formattedString = formattedString.slice(0,-1);
-                if(index < 8) formattedString += `\n\u2015\u2015\u2015 \u2015\u2015\u2015 \u2015\u2015\u2015\n`;
-            }
-        });
-        console.log('%c' + formattedString, 'color: red ;font-size:20px');
-    }
+        //loop through the.winningScenarios array
 
-    checkForReadiness(){ //check for game readiness
-        return this.gameBoard.every(function (cell) {
-            const isEmpty = cell === ''
-            return isEmpty
-        })
+        //check 
+    }
+    // game Logic
+    checkForVictory(){
+        for (var i = 0; i < this.winningScenarios.length; i++) {
+            var winningPossibility = this.winningScenarios[i]
+            var firstToken = this.gameBoard[winningPossibility[0]]
+            var secondToken = this.gameBoard[winningPossibility[1]]
+            var thirdToken = this.gameBoard[winningPossibility[2]]
+
+            if (firstToken === secondToken && secondToken === thirdToken){
+                return true
+            } else {
+                return false
+            }
+        }
     }
 
     checkForDraws() { //check for draws, if it is full it is a draw
@@ -48,47 +46,62 @@ class Game{
         })
     }
 
-    checkForVictories(){//=> this will run at the fifth turn ad up 
-        //check for readiness???
-        //forloop 
-        if (this.gameBoard[0]=== this.gameBoard[1] && this.gameBoard[0] === this.gameBoard[2]){
-             //     [0, 1, 2], //checks for the top row
-            return true;
-        }
-        if (this.gameBoard[3] === this.gameBoard[4] && this.gameBoard[3] === this.gameBoard[5]){
-            //     [3, 4, 5], //checks for the middle row
-            return true;
-        }
-        if (this.gameBoard[6] === this.gameBoard[7] && this.gameBoard[6] === this.gameBoard[8]){
-            //   [6, 7, 8], // checks for the botton row
-            return true;
-        }
-        if (this.gameBoard[0]  === this.gameBoard[3]&& this.gameBoard[0] === this.gameBoard[6]){
-            //     [0, 3, 6], // checks for the left colum
-            return true;
-        }
-        if (this.gameBoard[1] === this.gameBoard[4]&& this.gameBoard[1]=== this.gameBoard[7]){
-            //     [1, 4, 7], // checks for the middle column 
-            return true;
-        }
-        if (this.gameBoard[2] === this.gameBoard[5] && this.gameBoard[2] === this.gameBoard[8]){
-            //     [2, 5, 8], // checks for the right column
-            return true;
-        }
-        if ( this.gameBoard[0] === this.gameBoard[4] && this.gameBoard[0] === this.gameBoard[8]){
-            //     [0, 4, 8], // checks 1st cross 
-            return true;
-        }
-        if (this.gameBoard[2] === this.gameBoard[4] && this.gameBoard[2] === this.gameBoard[6]){
-            //     [2, 4, 6]  // checks 2nd cross
-            return true;
-        }
+    checkForReadiness(){ //check for game readiness
+        return this.gameBoard.every(function (cell) {
+            const isEmpty = cell === ''
+            return isEmpty
+        })
     }
+
+    findCurrentTurn() { 
+        return this.gameTurns %2 === 0 ? this.player2 : this.player1
+    }
+
+
+    // checkForVictories(){//=> this will run at the fifth turn ad up 
+    //     //check for readiness???
+    //     //forloop ???
+    //     if (this.gameBoard[0]=== this.gameBoard[1] && this.gameBoard[0] === this.gameBoard[2]){
+    //          //     [0, 1, 2], //checks for the top row
+    //          findWinner()
+    //          console.log( this.findCurrentTurn(), 'has won')
+    //         return false;
+    //     }
+    //     if (this.gameBoard[3] === this.gameBoard[4] && this.gameBoard[3] === this.gameBoard[5]){
+    //         console.log( this.findCurrentTurn(), 'has won')
+    //         return false;
+    //     }
+    //     if (this.gameBoard[6] === this.gameBoard[7] && this.gameBoard[6] === this.gameBoard[8]){
+    //         console.log( this.findCurrentTurn(), 'has won')
+    //         return false;
+    //     }
+    //     if (this.gameBoard[0]  === this.gameBoard[3]&& this.gameBoard[0] === this.gameBoard[6]){
+    //         console.log( this.findCurrentTurn(), 'has won')
+    //         return false;
+    //     }
+    //     if (this.gameBoard[1] === this.gameBoard[4]&& this.gameBoard[1]=== this.gameBoard[7]){
+    //         console.log( this.findCurrentTurn(), 'has won')
+    //         return false;
+    //     }
+    //     if (this.gameBoard[2] === this.gameBoard[5] && this.gameBoard[2] === this.gameBoard[8]){
+    //         console.log( this.findCurrentTurn(), 'has won')
+    //         return false;
+    //     }
+    //     if ( this.gameBoard[0] === this.gameBoard[4] && this.gameBoard[0] === this.gameBoard[8]){
+    //         console.log( this.findCurrentTurn(), 'has won')
+    //         return false;
+            
+    //     }
+    //     if (this.gameBoard[2] === this.gameBoard[4] && this.gameBoard[2] === this.gameBoard[6]){
+    //         console.log( this.findCurrentTurn(), 'has won')
+    //         return false;
+    //     }
+    // }
     
     checkWin(){
-        if ( this.gameTurns >= 5){
-            this.checkForVictories()
-        }
+        //checking=> boolean
+       //loop over the arrays => possible winning combinations
+
     }
 
     updateHeader(player){//needs to make use of a paramter so it can interpolate the player
@@ -99,32 +112,21 @@ class Game{
     }
 
     insertToken(token, position){//=>hardcode the tokens :) 
-        //decrements the Game turns
-        
-        if (position > 8 || this.gameBoard[position] > 8 || this.gameBoard[position] !== ''){//=> it checks for the length of array and overriding tokens
+        if (this.gameBoard[position] !== '' ){//=> it checks for the length of array and overriding tokens
+            //why the position?
             return false;
         } else {
             this.gameTurns++
-            console.log('turns left', 9 - this.gameTurns )
-            this.gameBoard[position] = token
-            this.findCourrentTurn()
-            //checkForVictory
-            console.log('player ' + this.findCourrentTurn() + 'has placed a ' + token + 'at position ' + this.gameBoard[position])
-            this.printBoard()
-            return true;
+            //=> p1 or p2 here I Iknow which player is playin
+            this.savePlayersMoves(this.findCurrentTurn(), position)//=> add the players game 
+            this.gameBoard[position] = token //assign the cell to a the new token
+            console.log('player ' + this.findCurrentTurn() + 'has placed a ' + token + 'at position ' + this.gameBoard[position])
+            this.printBoard() //display the updated board
         }
+        this.checkWin()
     }
 
-    findCourrentTurn() { 
-        if (this.gameTurns %2 === 0){
-            return this.player2.id //=> remove id's these are just for testing 
-        } else {
-            return this.player1.id
-        }
-    }
-
-
-    findWinner(player){//The winner will be founf and then the winCount will incease
+    findWinner(){//The winner will be founf and then the winCount will incease
         var winner; //=> p1 or p2 
         console.log(player)
         //should find who has got a victory
@@ -138,8 +140,6 @@ class Game{
         // how to save to LS the win
     }
 
-
-
     resetGame(){
         //setTimeOut(
             //reset the board
@@ -151,7 +151,17 @@ class Game{
         //, 5000)
         return this.announcement;
     }
+
+    printBoard() {
+        let formattedString = '';
+        this.gameBoard.forEach((cell, index) => {
+            formattedString += cell ? ` ${cell} |` : '   |';
+            if((index + 1) % 3 == 0)  {
+                formattedString = formattedString.slice(0,-1);
+                if(index < 8) formattedString += `\n\u2015\u2015\u2015 \u2015\u2015\u2015 \u2015\u2015\u2015\n`;
+            }
+        });
+        console.log('%c' + formattedString, 'color: red ;font-size:20px');
+    }
 }
-
-
 // module.exports = Game;
