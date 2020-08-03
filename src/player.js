@@ -4,7 +4,7 @@ class Player{
         this.name = `player ${id}`;
         this.winCount =  this.retrieveWinsFromStorage();
         this.isTurn = false; 
-        this.winningBoards= [];
+         this.winningBoards= [];
     }
 
     addWins(){
