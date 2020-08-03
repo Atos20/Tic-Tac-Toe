@@ -60,9 +60,10 @@ If you want to contribute
 >   - cd into the repository `cd <repo-name>`
 >    - create a new branch with `git checkout -b <new branch name>`
 >    - open your text editor and add or remove functionalities to the site.
->    - `git add` and `git commit -m` to save the changes to your local repository
+>    - `git add` and `git commit -m "<your commit meessage>"` to save the changes to your local repository
 >   - `git push` your changes
 >    - create a new pull request!
 
 ### Project Manager
- > []()
+
+[Scott Ertmer](https://github.com/sertmer)
