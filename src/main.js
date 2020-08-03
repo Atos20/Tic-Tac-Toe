@@ -21,33 +21,35 @@ function updateBoard(event){
     currentGame.insertToken(cellPosition)
     gameCells[cellPosition].innerHTML = currentGame.gameBoard[cellPosition]
     findWinner()
-    displayTurn(currentPlayer)
+    gameStatus(currentPlayer)
     updateWins()
 }
 
 function updateWins(){
-  oneWins.innerText = `${currentGame.player1.winCount} wins !!`
-  twoWins.innerText = `${currentGame.player2.winCount} wins !!`
-  console.log(currentGame.player1.winCount)
-  console.log(currentGame.player2.winCount)
+  oneWins.innerText = `${currentGame.player1.winCount} wins !!`;
+  twoWins.innerText = `${currentGame.player2.winCount} wins !!`;
 }
 
 function findWinner(){
   currentGame.checkWin()
 }
 
-function displayTurn(currentPlayer){
+function gameStatus(currentPlayer){
   // var currentPlayer = currentGame.findCurrentTurn()
-  return +currentPlayer.id === 1 ? mainHeader.innerHTML = `It's 👾's turn`: mainHeader.innerHTML = `It's 🐔's turn`;
-  // if (+currentPlayer.id === 1 ){
-  //   mainHeader.innerHTML = `It's 👾's turn`;
-  // }
-  // if (+currentPlayer.id === 2 ){
-  //   mainHeader.innerHTML = `It's 🐔's turn`;
+  // return +currentPlayer.id === 1 ? mainHeader.innerText = `It's 👾's turn`: mainHeader.innerText = `It's 🐔's turn`;
+  console.log(currentGame.announcement)
+  if (+currentPlayer.id === 1){
+    mainHeader.innerHTML = `It's 🐔's turn`;
+  }
+  if (+currentPlayer.id === 2){
+    mainHeader.innerHTML = `It's 👾's turn`;
+  }
+  if (!currentGame.isGameActive){
+    console.log(currentPlayer)
+    mainHeader.innerHTML = currentGame.announcement
+  }
+  console.log(currentGame)
+  // if(){
+  //   mainHeader.innerHTML = currentGame.announcement
   // }
 }
-
-// function retrievePlayerWins(){
-//   oneWins.innerText = `${currentGame.player1.winCount} wins !!`
-//   twoWins.innerText = `${currentGame.player2.winCount} wins !!`
-// }
