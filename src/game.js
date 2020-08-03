@@ -29,9 +29,9 @@ class Game{
         this.deactivateGame()//
         this.announcement = `${winner.name} Wins`
         console.log('declareWinner()',this.announcement)
+        winner.winningBoards.unshift(this.gameBoard)
         winner.saveWinsToStorage()
         //save current board game
-        winner.winningBoards.unshift(this.gameBoard)
         // this.disableGame()
         this.resetGame()
     }
