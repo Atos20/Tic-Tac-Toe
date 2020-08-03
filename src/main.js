@@ -20,7 +20,7 @@ function updateBoard(event){
     currentGame.insertToken(cellPosition)
     gameCells[cellPosition].innerHTML = currentGame.gameBoard[cellPosition]
     findWinner()
-    updateHeader(event)
+    updateHeader()
 }
 
 function findWinner(){
