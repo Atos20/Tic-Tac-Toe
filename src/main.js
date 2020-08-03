@@ -24,7 +24,6 @@ function updateBoard(event){
 }
 
 function findWinner(){
-
   currentGame.checkWin()
 }
 
@@ -32,7 +31,8 @@ function updateHeader(){
   var currentPlayer = currentGame.findCurrentTurn()
   if (+currentPlayer.id === 1 ){
     mainHeader.innerHTML = `It's 👾's turn`;
-  } else if (+currentPlayer.id === 2 ){
+  }
+  if (+currentPlayer.id === 2 ){
     mainHeader.innerHTML = `It's 🐔's turn`;
   }
 }
