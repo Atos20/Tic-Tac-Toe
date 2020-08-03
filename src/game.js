@@ -34,7 +34,7 @@ class Game{
                 // alert('5 seconds')
                 location.reload();
                 // this.resetGame()
-            }, 2500);
+            }, 2000);
         }
     }
 
