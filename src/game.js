@@ -5,7 +5,6 @@ class Game{
         this.player1 = new Player ('1');//tested
         this.player2 = new Player ('2');// tested
         this.gameBoard = ['', '', '', '', '', '', '', '', '']
-        this.winnings = [];
         this.gameTurns = 0;
         this.announcement = ''; //tested => will display the title
         this.isGameActive = true;
@@ -28,14 +27,13 @@ class Game{
     declareWinner(player){
         this.announcement = `${player.name} Wins`
         console.log(this.announcement)
-        player.addWins()
         player.saveWinsToStorage()
         // this.disableGame()
         if(!this.isGameActive){
-            setTimeout(function (){
+            setTimeout(() => {
                 alert('5 seconds')
                 this.resetGame()
-            }, 3000);
+            }, 2000);
         }
     }
 
@@ -47,7 +45,7 @@ class Game{
     }
 
     // game Logic
-    checkForVictory(){
+    checkForVictory(){ 
         this.checkForDraws() 
         var currentTurn = this.findCurrentTurn()
         for (var i = 0; i < this.winningScenarios.length; i++) {
@@ -57,12 +55,16 @@ class Game{
                 var thirdIndex = this.gameBoard[this.winningScenarios[i][j + 2]]
                 if(winningIndex === secondIndex && secondIndex === thirdIndex && winningIndex !== ''){
                     //save current board game
+                    currentTurn.winningBoards.unshift(this.gameBoard)
                     // this.deactivateGame()
+                    currentTurn.addWins()
+                    this.deactivateGame()
                     this.declareWinner(currentTurn)
                     return true
                 }
             }
         }
+
     }     
 
     checkForDraws() { //check for draws, if it is full it is a draw
@@ -82,45 +84,45 @@ class Game{
     }
 
 
-    checkForVictoriesV2(){//=> this will run at the fifth turn ad up 
-        //check for readiness???
-        //forloop ???
-        if (this.gameBoard[0]=== this.gameBoard[1] && this.gameBoard[0] === this.gameBoard[2]){
-             //     [0, 1, 2], //checks for the top row
-             findWinner()
-             console.log( this.findCurrentTurn(), 'has won')
-            return false;
-        }
-        if (this.gameBoard[3] === this.gameBoard[4] && this.gameBoard[3] === this.gameBoard[5]){
-            console.log( this.findCurrentTurn(), 'has won')
-            return false;
-        }
-        if (this.gameBoard[6] === this.gameBoard[7] && this.gameBoard[6] === this.gameBoard[8]){
-            console.log( this.findCurrentTurn(), 'has won')
-            return false;
-        }
-        if (this.gameBoard[0]  === this.gameBoard[3]&& this.gameBoard[0] === this.gameBoard[6]){
-            console.log( this.findCurrentTurn(), 'has won')
-            return false;
-        }
-        if (this.gameBoard[1] === this.gameBoard[4]&& this.gameBoard[1]=== this.gameBoard[7]){
-            console.log( this.findCurrentTurn(), 'has won')
-            return false;
-        }
-        if (this.gameBoard[2] === this.gameBoard[5] && this.gameBoard[2] === this.gameBoard[8]){
-            console.log( this.findCurrentTurn(), 'has won')
-            return false;
-        }
-        if ( this.gameBoard[0] === this.gameBoard[4] && this.gameBoard[0] === this.gameBoard[8]){
-            console.log( this.findCurrentTurn(), 'has won')
-            return false;
+    // checkForVictoriesV2(){//=> this will run at the fifth turn ad up 
+    //     //check for readiness???
+    //    }  //forloop ???
+    //     if (this.gameBoard[0]=== this.gameBoard[1] && this.gameBoard[0] === this.gameBoard[2]){
+    //          //     [0, 1, 2], //checks for the top row
+    //          findWinner()
+    //          console.log( this.findCurrentTurn(), 'has won')
+    //         return false;
+    //     }
+    //     if (this.gameBoard[3] === this.gameBoard[4] && this.gameBoard[3] === this.gameBoard[5]){
+    //         console.log( this.findCurrentTurn(), 'has won')
+    //         return false;
+    //     }
+    //     if (this.gameBoard[6] === this.gameBoard[7] && this.gameBoard[6] === this.gameBoard[8]){
+    //         console.log( this.findCurrentTurn(), 'has won')
+    //         return false;
+    //     }
+    //     if (this.gameBoard[0]  === this.gameBoard[3]&& this.gameBoard[0] === this.gameBoard[6]){
+    //         console.log( this.findCurrentTurn(), 'has won')
+    //         return false;
+    //     }
+    //     if (this.gameBoard[1] === this.gameBoard[4]&& this.gameBoard[1]=== this.gameBoard[7]){
+    //         console.log( this.findCurrentTurn(), 'has won')
+    //         return false;
+    //     }
+    //     if (this.gameBoard[2] === this.gameBoard[5] && this.gameBoard[2] === this.gameBoard[8]){
+    //         console.log( this.findCurrentTurn(), 'has won')
+    //         return false;
+    //     }
+    //     if ( this.gameBoard[0] === this.gameBoard[4] && this.gameBoard[0] === this.gameBoard[8]){
+    //         console.log( this.findCurrentTurn(), 'has won')
+    //         return false;
             
-        }
-        if (this.gameBoard[2] === this.gameBoard[4] && this.gameBoard[2] === this.gameBoard[6]){
-            console.log( this.findCurrentTurn(), 'has won')
-            return false;
-        }
-    }
+    //     }
+    //     if (this.gameBoard[2] === this.gameBoard[4] && this.gameBoard[2] === this.gameBoard[6]){
+    //         console.log( this.findCurrentTurn(), 'has won')
+    //         return false;
+    //     }
+   
 
     updateHeader(player){//needs to make use of a paramter so it can interpolate the player
        if (checkForVictories()){
@@ -143,18 +145,16 @@ class Game{
             this.gameTurns++
             return this.gameBoard[position] = '👾';
         }
-        // this.checkWin() //check for a winnning condition
+        this.checkWin() //check for a winnning condition
     }
     
     resetGame(){
             //reset the board
-            var newBoard = ['', '', '', '', '', '', '', '', '']
-            this.gameBoard = newBoard;
+            this.gameBoard = ['', '', '', '', '', '', '', '', '']
             //this.announcement 
             this.announcement = 'Game will restart in 5 sec.'
-            console.log(this.announcemen)
+            console.log(this.announcement)
             //get the information from estorage 
-            this.printBoard()
         return this.announcement;
     }
 }
