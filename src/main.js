@@ -12,7 +12,7 @@ gameBoard.addEventListener('click', updateBoard);
 
 function startGame(){
   currentGame = new Game()
-  retrievePlayerWins()
+  updateWins()
 }
 
 function updateBoard(event){
@@ -20,13 +20,20 @@ function updateBoard(event){
   var cellPosition = +event.target.id
     currentGame.insertToken(cellPosition)
     gameCells[cellPosition].innerHTML = currentGame.gameBoard[cellPosition]
-    displayWins()
+    findWinner()
     displayTurn(currentPlayer)
+    updateWins()
 }
 
-function displayWins(){
+function updateWins(){
+  oneWins.innerText = `${currentGame.player1.winCount} wins !!`
+  twoWins.innerText = `${currentGame.player2.winCount} wins !!`
+  console.log(currentGame.player1.winCount)
+  console.log(currentGame.player2.winCount)
+}
+
+function findWinner(){
   currentGame.checkWin()
-  console.log()
 }
 
 function displayTurn(currentPlayer){
@@ -40,7 +47,7 @@ function displayTurn(currentPlayer){
   // }
 }
 
-function retrievePlayerWins(){
-  oneWins.innerText = `${currentGame.player1.winCount} wins !!`
-  twoWins.innerText = `${currentGame.player2.winCount} wins !!`
-}
+// function retrievePlayerWins(){
+//   oneWins.innerText = `${currentGame.player1.winCount} wins !!`
+//   twoWins.innerText = `${currentGame.player2.winCount} wins !!`
+// }
