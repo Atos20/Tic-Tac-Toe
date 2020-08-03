@@ -4,6 +4,8 @@ var gameCells = document.querySelectorAll('.cell');
 var mainHeader = document.querySelector('.main-header');
 var oneWins = document.querySelector('.p1-win-count')
 var twoWins = document.querySelector('.p2-win-count')
+// var playerOneBoards = document.querySelector('.p1-game')
+// var playerTwoBoards = document.querySelector('.p2-game')
 
 var currentGame;
 window.onload = startGame();
@@ -12,7 +14,10 @@ gameBoard.addEventListener('click', updateBoard);
 
 function startGame(){
   currentGame = new Game()
+  console.log(currentGame)
   updateWins()
+  updateWinnningBoards(currentGame.player1)
+  updateWinnningBoards(currentGame.player2)
 }
 
 function updateBoard(event){
@@ -28,6 +33,36 @@ function updateBoard(event){
 function updateWins(){
   oneWins.innerText = `${currentGame.player1.winCount} wins !!`;
   twoWins.innerText = `${currentGame.player2.winCount} wins !!`;
+}
+
+function updateWinnningBoards(currentPlayer){//change name
+  var storedBoards = currentPlayer.winningBoards
+  var playerBoard 
+  if(+currentPlayer.id === 1){
+    playerBoard = document.querySelector('.p1-games');
+  } else {
+    playerBoard = document.querySelector('.p2-games')
+  }
+  playerBoard.innerHTML = '';
+  for (let i = 0; i < storedBoards.length; i++) {
+    var token = storedBoards[i]
+    playerBoard.innerHTML +=
+    `
+    <article class="player-container">
+                <div class="mini-game-board">
+                    <div class="one min-cell">${token[0]}</div>
+                    <div class="two min-cell">${token[1]}</div>
+                    <div class="three min-cell">${token[2]}</div>
+                    <div class="four min-cell">${token[3]}</div>
+                    <div class="five min-cell">${token[4]}</div>
+                    <div class="six min-cell">${token[5]}</div>
+                    <div class="seven min-cell">${token[6]}</div>
+                    <div class="eigth min-cell">${token[7]}</div>
+                    <div class="nine min-cell">${token[8]}</div>
+                </div>
+            </article>
+    `
+  }
 }
 
 function findWinner(){
