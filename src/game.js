@@ -28,7 +28,7 @@ class Game{
     declareWinner(winner){
         this.deactivateGame()//
         this.announcement = `${winner.name} Wins`
-        console.log(this.announcement)
+        console.log('declareWinner()',this.announcement)
         winner.saveWinsToStorage()
         //save current board game
         winner.winningBoards.unshift(this.gameBoard)
@@ -47,7 +47,6 @@ class Game{
                 var thirdIndex = this.gameBoard[this.winningScenarios[i][j + 2]]
                 if(winningIndex === secondIndex && secondIndex === thirdIndex && winningIndex !== ''){
                     currentTurn.addWins()
-                    console.log('the winner is', currentTurn.name)
                     this.declareWinner(currentTurn)
                     return true
                 }
@@ -70,9 +69,10 @@ class Game{
 
     }
 
-    // checkForReadiness(){ //check for game readiness
-    //     return !this.gameBoard.includes('') ? false : true
-    // }
+    checkForReadiness(){ //check for game readiness
+        this.announcement = 'ARE YOU READY'
+        return !this.gameBoard.includes('') ? false : true
+    }
 
     findCurrentTurn() { 
         return this.gameTurns %2 === 0 ? this.player2 : this.player1;
@@ -127,7 +127,6 @@ class Game{
     }
 
     insertToken(position){
-        console.log('is game active', this.isGameActive)
         var currentPostion = this.findCurrentTurn()
         // console.log(this.findCurrentTurn())
         if (this.gameBoard[position] !== ''){ //=> makes sure not to over ride a position
@@ -145,11 +144,11 @@ class Game{
     
     resetGame(){
             this.gameBoard = ['', '', '', '', '', '', '', '', '']
-            console.log('Game will restart in 5 sec.')
+            console.log('Game will restart in 2 sec.')
             if(!this.isGameActive){
-                setTimeout(() => {
+                setTimeout(function() {
                     location.reload();
-                }, 5000);
+                }, 2000);
             }
         return this.announcement;
     }
