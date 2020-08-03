@@ -26,14 +26,15 @@ class Game{
 
     declareWinner(player){
         this.announcement = `${player.name} Wins`
-        console.log(this.announcement)
+        // console.log(this.announcement)
         player.saveWinsToStorage()
         // this.disableGame()
         if(!this.isGameActive){
             setTimeout(() => {
-                alert('5 seconds')
-                this.resetGame()
-            }, 2000);
+                // alert('5 seconds')
+                location.reload();
+                // this.resetGame()
+            }, 2500);
         }
     }
 
