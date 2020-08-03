@@ -26,8 +26,9 @@ class Game{
 
     
     declareWinner(winner){
+        this.deactivateGame()//
         this.announcement = `${winner.name} Wins`
-        // console.log(this.announcement)
+        console.log(this.announcement)
         winner.saveWinsToStorage()
         //save current board game
         winner.winningBoards.unshift(this.gameBoard)
@@ -47,7 +48,6 @@ class Game{
                 if(winningIndex === secondIndex && secondIndex === thirdIndex && winningIndex !== ''){
                     currentTurn.addWins()
                     console.log('the winner is', currentTurn.name)
-                    this.deactivateGame()
                     this.declareWinner(currentTurn)
                     return true
                 }
@@ -61,7 +61,6 @@ class Game{
             this.checkForVictory()
         }
     }
-
 
     checkForDraws() { //check for draws, if it is full it is a draw
         if (!this.gameBoard.includes('') ){
@@ -128,31 +127,29 @@ class Game{
     }
 
     insertToken(position){
-        var currentTurn = this.findCurrentTurn()
+        console.log('is game active', this.isGameActive)
+        var currentPostion = this.findCurrentTurn()
         // console.log(this.findCurrentTurn())
-        if (this.gameBoard[position] !== '' ||  this.checkForVictory() === true){ //=> makes sure not to over ride a position
+        if (this.gameBoard[position] !== ''){ //=> makes sure not to over ride a position
             return false;
         } 
-        if (this.gameBoard[position] === '' && currentTurn === this.player2) {
+        if (this.gameBoard[position] === '' && currentPostion  === this.player2 && this.isGameActive === true) {
             this.gameTurns++
             return this.gameBoard[position] = '🐔';
         } 
-        if ((this.gameBoard[position] === '' && currentTurn === this.player1)){
+        if ((this.gameBoard[position] === '' && currentPostion === this.player1 && this.isGameActive === true)){
             this.gameTurns++
             return this.gameBoard[position] = '👾';
         }
-        this.checkWin() //check for a winnning condition
     }
     
     resetGame(){
             this.gameBoard = ['', '', '', '', '', '', '', '', '']
-            this.announcement = 'Game will restart in 2 sec.'
-            console.log(this.announcement)
+            console.log('Game will restart in 5 sec.')
             if(!this.isGameActive){
                 setTimeout(() => {
-                    alert('2 seconds')
-                    // location.reload();
-                }, 2000);
+                    location.reload();
+                }, 5000);
             }
         return this.announcement;
     }
