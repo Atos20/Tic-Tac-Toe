@@ -24,25 +24,15 @@ class Game{
         this.isGameActive = !this.isGameActive;
     }
 
-    declareWinner(player){
-        this.announcement = `${player.name} Wins`
+    
+    declareWinner(winner){
+        this.announcement = `${winner.name} Wins`
         // console.log(this.announcement)
-        player.saveWinsToStorage()
+        winner.saveWinsToStorage()
+        //save current board game
+        winner.winningBoards.unshift(this.gameBoard)
         // this.disableGame()
-        if(!this.isGameActive){
-            setTimeout(() => {
-                // alert('5 seconds')
-                location.reload();
-                // this.resetGame()
-            }, 2000);
-        }
-    }
-
-    checkWin(){
-        if(this.gameTurns >= 5){
-            console.log('check for win')
-            this.checkForVictory()
-        }
+        this.resetGame()
     }
 
     // game Logic
@@ -55,18 +45,23 @@ class Game{
                 var secondIndex = this.gameBoard[this.winningScenarios[i][j + 1]]
                 var thirdIndex = this.gameBoard[this.winningScenarios[i][j + 2]]
                 if(winningIndex === secondIndex && secondIndex === thirdIndex && winningIndex !== ''){
-                    //save current board game
-                    currentTurn.winningBoards.unshift(this.gameBoard)
-                    // this.deactivateGame()
                     currentTurn.addWins()
+                    console.log('the winner is', currentTurn.name)
                     this.deactivateGame()
                     this.declareWinner(currentTurn)
                     return true
                 }
             }
         }
+    }    
+    
+    checkWin(){
+        if(this.gameTurns >= 5){
+            console.log('check for win')
+            this.checkForVictory()
+        }
+    }
 
-    }     
 
     checkForDraws() { //check for draws, if it is full it is a draw
         if (!this.gameBoard.includes('') ){
@@ -150,12 +145,15 @@ class Game{
     }
     
     resetGame(){
-            //reset the board
             this.gameBoard = ['', '', '', '', '', '', '', '', '']
-            //this.announcement 
-            this.announcement = 'Game will restart in 5 sec.'
+            this.announcement = 'Game will restart in 2 sec.'
             console.log(this.announcement)
-            //get the information from estorage 
+            if(!this.isGameActive){
+                setTimeout(() => {
+                    alert('2 seconds')
+                    // location.reload();
+                }, 2000);
+            }
         return this.announcement;
     }
 }
