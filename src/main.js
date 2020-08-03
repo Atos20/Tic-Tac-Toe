@@ -16,25 +16,28 @@ function startGame(){
 }
 
 function updateBoard(event){
+  var currentPlayer = currentGame.findCurrentTurn()
   var cellPosition = +event.target.id
     currentGame.insertToken(cellPosition)
     gameCells[cellPosition].innerHTML = currentGame.gameBoard[cellPosition]
-    findWinner()
-    updateHeader()
+    displayWins()
+    displayTurn(currentPlayer)
 }
 
-function findWinner(){
+function displayWins(){
   currentGame.checkWin()
+  console.log()
 }
 
-function updateHeader(){
-  var currentPlayer = currentGame.findCurrentTurn()
-  if (+currentPlayer.id === 1 ){
-    mainHeader.innerHTML = `It's 👾's turn`;
-  }
-  if (+currentPlayer.id === 2 ){
-    mainHeader.innerHTML = `It's 🐔's turn`;
-  }
+function displayTurn(currentPlayer){
+  // var currentPlayer = currentGame.findCurrentTurn()
+  return +currentPlayer.id === 1 ? mainHeader.innerHTML = `It's 👾's turn`: mainHeader.innerHTML = `It's 🐔's turn`;
+  // if (+currentPlayer.id === 1 ){
+  //   mainHeader.innerHTML = `It's 👾's turn`;
+  // }
+  // if (+currentPlayer.id === 2 ){
+  //   mainHeader.innerHTML = `It's 🐔's turn`;
+  // }
 }
 
 function retrievePlayerWins(){
