@@ -4,7 +4,8 @@ class Game{
     constructor(boardState) {
         this.player1 = new Player ('1');//tested
         this.player2 = new Player ('2');// tested
-        this.gameBoard = boardState//=> to check for the token being placed by the player   
+        this.gameBoard = ['', '', '', '', '', '', '', '', '']
+        this.winnings = [];
         this.gameTurns = 0;
         this.announcement = ''; //tested => will display the title
         this.isGameActive = true;
@@ -40,6 +41,7 @@ class Game{
 
     checkWin(){
         if(this.gameTurns >= 5){
+            console.log('check for win')
             this.checkForVictory()
         }
     }
@@ -54,7 +56,8 @@ class Game{
                 var secondIndex = this.gameBoard[this.winningScenarios[i][j + 1]]
                 var thirdIndex = this.gameBoard[this.winningScenarios[i][j + 2]]
                 if(winningIndex === secondIndex && secondIndex === thirdIndex && winningIndex !== ''){
-                    this.deactivateGame()
+                    //save current board game
+                    // this.deactivateGame()
                     this.declareWinner(currentTurn)
                     return true
                 }
@@ -75,7 +78,7 @@ class Game{
     // }
 
     findCurrentTurn() { 
-        return this.gameTurns %2 === 0 ? this.player2 : this.player1
+        return this.gameTurns %2 === 0 ? this.player2 : this.player1;
     }
 
 
@@ -127,21 +130,20 @@ class Game{
     }
 
     insertToken(position){
-        this.findCurrentTurn()
+        var currentTurn = this.findCurrentTurn()
         // console.log(this.findCurrentTurn())
-        if (this.gameBoard[position] !== '' ){ //=> makes sure not to over ride a position
+        if (this.gameBoard[position] !== '' ||  this.checkForVictory() === true){ //=> makes sure not to over ride a position
             return false;
         } 
-        if (this.gameBoard[position] === '' && this.findCurrentTurn() === this.player2) {
+        if (this.gameBoard[position] === '' && currentTurn === this.player2) {
             this.gameTurns++
-            this.gameBoard[position] = '🌝' ;
+            return this.gameBoard[position] = '🐔';
         } 
-        if ((this.gameBoard[position] === '' && this.findCurrentTurn() === this.player1)){
+        if ((this.gameBoard[position] === '' && currentTurn === this.player1)){
             this.gameTurns++
-            this.gameBoard[position] = '🌚' ;
+            return this.gameBoard[position] = '👾';
         }
-        this.printBoard() //display the updated board
-        this.checkWin() //check for a winnning condition
+        // this.checkWin() //check for a winnning condition
     }
     
     resetGame(){
@@ -154,18 +156,6 @@ class Game{
             //get the information from estorage 
             this.printBoard()
         return this.announcement;
-    }
-
-    printBoard() {
-        let formattedString = '';
-        this.gameBoard.forEach((cell, index) => {
-            formattedString += cell ? ` ${cell} |` : '   |';
-            if((index + 1) % 3 == 0)  {
-                formattedString = formattedString.slice(0,-1);
-                if(index < 8) formattedString += `\n\u2015\u2015\u2015 \u2015\u2015\u2015 \u2015\u2015\u2015\n`;
-            }
-        });
-        console.log('%c' + formattedString, 'color: red ;font-size:20px');
     }
 }
 // module.exports = Game;
