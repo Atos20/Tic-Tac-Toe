@@ -90,7 +90,6 @@ body {
 }
 
  .player-container{
-    /* border-radius: 3px; */
     margin: 7%;
     justify-self: center;
     align-self: center;
@@ -207,7 +206,6 @@ body {
     }
 
     .cell {
-        /* cursor: pointer; */
         font-size: 64px;
         background-color: var( --background-color);
         height: 1em;
@@ -220,9 +218,6 @@ body {
 }
 
 @media only screen and (max-width: 700px){
-    /* .game-board{
-        grid-gap: 3px;
-    } */
 
     .game-board{
         background: var(--bars-color);
@@ -285,12 +280,4 @@ body {
     .p1-games, .p2-games {
         padding: 3%;
     }
-
-    /* .player1-name,
-    .player2-name, 
-    .p1-win-count, 
-    .p2-win-count{
-        font-size: 25px;
-    }
-     */
 }
