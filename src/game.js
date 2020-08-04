@@ -63,7 +63,9 @@ class Game{
 
     checkForDraws() { //check for draws, if it is full it is a draw
         if (!this.gameBoard.includes('') ){
+            this.deactivateGame()//
             this.announcement = 'It is a DRAW';
+            this.resetGame()
             console.log(this.announcement )
         }
 
@@ -148,7 +150,7 @@ class Game{
             if(!this.isGameActive){
                 setTimeout(function() {
                     location.reload();
-                }, 2000);
+                }, 1000);
             }
         return this.announcement;
     }
