@@ -31,7 +31,6 @@ class Game{
         this.resetGame();
     }
 
-    // game Logic
     checkForVictory(){ 
         this.checkForDraws() ;
         var currentTurn = this.findCurrentTurn();
