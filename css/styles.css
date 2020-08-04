@@ -1,23 +1,22 @@
+:root{
+    --bars-color: rgb(233, 195, 114);
+    --background-color:  rgb(94, 182, 156);
+    --players-background: rgb(221, 41, 152);
+    --section-color: rgba(216, 199, 42, 0.815);
+}
+
 body {
     box-sizing: border-box;
     font-family: 'Permanent Marker', cursive;
   }
 
-  :root{
-      --bars-color: rgb(233, 195, 114);
-      --background-color:  rgb(94, 182, 156);
-      --players-background: rgb(221, 41, 152);
-      --section-color: rgba(216, 199, 42, 0.815);
-  }
-
-
   .main-container{
-      display: flex;
-      flex-direction: row;
-      height: 100vh;
-      text-align: center;
-      font-size: 2em;
-      /* padding: 1% 1% 1% 1%; */
+    display: flex;
+    font-size: 2em;
+    flex-direction: row;
+    height: 100vh;
+    text-align: center;
+    vertical-align: middle;
   }
 
   .center-section{
@@ -26,20 +25,24 @@ body {
     flex-direction: column;
     height: 100%;
     padding: 3%;
-    width: 70vh;
+    width: 30%;
   }
 
   .game-name{
     color: cornsilk;
-    font-size: 65px;
+    font-size: 2em;
   }
 
   .player1-name, .player2-name, .p1-win-count, .p2-win-count{
-      margin-bottom: 4%;
+    margin-bottom: 4%;
   }
+
+  .player1-token, .player2-token{
+    font-size: 2em;
+}
+
   .container{
     align-self: center;
-    border-radius: 25px;
     padding: 3%;
     margin: 5%;
 }
@@ -55,12 +58,11 @@ body {
 }
 
 .cell {
-
     cursor: pointer;
     font-size: 2em;
     background-color: var( --background-color);
-    height: 90px;
-    width: 90px;
+    height: 1.5em;
+    width: 1.5em;
 }
 
 .left-section,  .rigth-section{
@@ -74,14 +76,13 @@ body {
 }
 
   .p1-games, .p2-games{
-      display: grid;
-      background-color: var( --players-background);
-      height: 45vh;
-      grid-template-columns: repeat(3, 1fr );
-      grid-template-rows: repeat(6, 1fr );
-      overflow: scroll;
-      margin: 2% 1% 2% 1%;
-      /* width: 60vh; */
+    display: grid;
+    background-color: var( --players-background);
+    height: 50%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    overflow: scroll;
+    margin: 2% 1% 2% 1%;
   }
 
   .main-header{
@@ -89,28 +90,207 @@ body {
 }
 
  .player-container{
-    border-radius: 3px;
-    background-color: cornflowerblue;
-    /* padding: 5%; */
+    /* border-radius: 3px; */
     margin: 7%;
-    /* height: 100px;
-    width: 100px; */
+    justify-self: center;
+    align-self: center;
 }
 
 .mini-game-board{
     background: var( --bars-color);
     display: grid;
-    grid-template-columns: repeat(3, 30px);
-    grid-template-rows: repeat(3, 30px);
-    grid-gap: 1px;
-    width: 93px;
+    grid-template-columns: repeat(3, 1em);
+    grid-template-rows: repeat(3, 1em);
+    width: 100%;
     align-content: center;
+    justify-content: center;
     
 }
 .min-cell {
-    font-size: 13px;
+    font-size: 20px;
     background-color: var( --background-color);
-    height: 25px;
-    width: 25px;
-    margin-top: 3px;
+    height: 1.3em;
+    width: 1.3em; 
+    align-self: center;
+    justify-self: center;
+}
+
+@media only screen and (min-width: 1200px){
+    .player1-token, .player2-token{
+        font-size: 2em;
+    }
+
+    .player1-name, .player2-name, .p1-win-count, .p2-win-count {
+        font-size: 1.5em;
+        margin-bottom: 4%;
+    }
+
+    .p1-games, .p2-games {
+        grid-template-columns: repeat(3, 1fr); 
+        padding-top: 3%;  
+    }
+
+    .mini-game-board {
+        grid-template-columns: repeat(3, 1.3em);
+        grid-template-rows: repeat(3, 1.3em);
+        height: 4em;
+        justify-content: center;
+        width: 4em;
+    }
+
+    .min-cell{
+        font-size: 27px;
+        height: 1.4em;
+        width: 1.4em;
+    }
+
+}
+
+@media only screen and (min-width: 1500px){
+
+    .player1-name, .player2-name, .p1-win-count, .p2-win-count {
+        font-size: 2em;
+    }
+
+    .p1-games, .p2-games{
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 0px;
+        align-content: center;
+        height: 65vh;
+        padding-top: 13%;
+    }
+
+    .mini-gameboard{
+        grid-template-columns: repeat(3, 40px);
+        grid-template-rows: repeat(3, 40px);
+        grid-gap: 1px;
+        width: 5em;
+        height: 5em;
+    }
+
+    .cell {
+        cursor: pointer;
+        font-size: 3em;
+        background-color: var( --background-color);
+        height: 130px;
+        width: 130px;
+    }
+
+    .player-container {
+        margin: 7%;
+    }
+
+    .mini-game-board {
+        grid-template-columns: repeat(3, 65px);
+        grid-template-rows: repeat(3, 65px);
+        width: 6em;
+        height: 6em;
+    }
+
+    .min-cell {
+        font-size: 1.5em;
+        background-color: var( --background-color);
+        height: 1.2em;
+        width: 1.2em;
+        margin-top: 3px;
+        align-self: center;
+        justify-self: center;
+    }
+
+}
+
+@media only screen and (max-width: 1000px){
+    .game-board{
+        grid-template-columns: repeat(3, 2em);
+        grid-template-rows: repeat(3, 2em );
+        grid-gap: 3px;
+    }
+
+    .cell {
+        /* cursor: pointer; */
+        font-size: 64px;
+        background-color: var( --background-color);
+        height: 1em;
+        width: 1em;
+    }
+
+    .p1-games, .p2-games {
+        grid-template-columns: repeat(2, 1fr );
+    }
+}
+
+@media only screen and (max-width: 700px){
+    /* .game-board{
+        grid-gap: 3px;
+    } */
+
+    .game-board{
+        background: var(--bars-color);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr );
+        grid-template-rows: repeat(3, 1fr );
+        grid-gap: 6px;
+        justify-self: center;
+        justify-items: center;
+    
+    }
+
+    .cell {
+        font-size: 1em;
+        height: 64px;
+        width: 64px;
+    }
+
+    .p1-games, .p2-games {
+        background-color: var( --players-background);
+        height: 75%;
+        grid-template-columns: repeat(1, 1fr );
+        padding: 6%;
+        width: 80%;
+    }
+
+    .player1-name,
+    .player2-name, 
+    .p1-win-count, 
+    .p2-win-count{
+        font-size: 25px;
+}
+
+.center-section {
+    width: 36%;
+}
+
+@media only screen and (max-width: 532px){
+    .main-container {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        grid-template-rows: 45%, 55%;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .left-section, .rigth-section{
+        width: 100%;
+        justify-content: end;
+        align-items: center;
+        position: relative;
+        height: 120%;
+    }
+
+    .center-section{
+        grid-area: 1/ span 2;
+        width: 95%;
+    }
+
+    .p1-games, .p2-games {
+        padding: 3%;
+    }
+
+    /* .player1-name,
+    .player2-name, 
+    .p1-win-count, 
+    .p2-win-count{
+        font-size: 25px;
+    }
+     */
 }
