@@ -227,7 +227,6 @@ body {
         grid-gap: 6px;
         justify-self: center;
         justify-items: center;
-    
     }
 
     .cell {
@@ -249,10 +248,11 @@ body {
     .p1-win-count, 
     .p2-win-count{
         font-size: 25px;
-}
+    }
 
     .center-section {
         width: 36%;
+    }
 }
 
 @media only screen and (max-width: 532px){
