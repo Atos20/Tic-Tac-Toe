@@ -4,8 +4,6 @@ var gameCells = document.querySelectorAll('.cell');
 var mainHeader = document.querySelector('.main-header');
 var oneWins = document.querySelector('.p1-win-count')
 var twoWins = document.querySelector('.p2-win-count')
-// var playerOneBoards = document.querySelector('.p1-game')
-// var playerTwoBoards = document.querySelector('.p2-game')
 
 var currentGame;
 window.onload = startGame();
@@ -14,10 +12,9 @@ gameBoard.addEventListener('click', updateBoard);
 
 function startGame(){
   currentGame = new Game()
-  console.log(currentGame)
   updateWins()
-  updateWinnningBoards(currentGame.player1)
-  updateWinnningBoards(currentGame.player2)
+  retrievePLayerBoards(currentGame.player1)
+  retrievePLayerBoards(currentGame.player2)
 }
 
 function updateBoard(event){
@@ -35,7 +32,7 @@ function updateWins(){
   twoWins.innerText = `${currentGame.player2.winCount} wins !!`;
 }
 
-function updateWinnningBoards(currentPlayer){//change name
+function retrievePLayerBoards(currentPlayer){
   var storedBoards = currentPlayer.winningBoards
   var playerBoard 
   if(+currentPlayer.id === 1){
@@ -70,8 +67,6 @@ function findWinner(){
 }
 
 function gameStatus(currentPlayer){
-  // var currentPlayer = currentGame.findCurrentTurn()
-  // return +currentPlayer.id === 1 ? mainHeader.innerText = `It's 👾's turn`: mainHeader.innerText = `It's 🐔's turn`;
   console.log(currentGame.announcement)
   if (+currentPlayer.id === 1){
     mainHeader.innerHTML = `It's 🐔's turn`;
@@ -83,8 +78,4 @@ function gameStatus(currentPlayer){
     console.log(currentPlayer)
     mainHeader.innerHTML = currentGame.announcement
   }
-  console.log(currentGame)
-  // if(){
-  //   mainHeader.innerHTML = currentGame.announcement
-  // }
 }
