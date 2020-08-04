@@ -42,7 +42,6 @@ class Game{
                 if(winningIndex === secondIndex && secondIndex === thirdIndex && winningIndex !== ''){
                     currentTurn.addWins();
                     this.declareWinner(currentTurn);
-                    // return true
                 }
             }
         }
