@@ -17,6 +17,7 @@ body {
       height: 100vh;
       text-align: center;
       font-size: 2em;
+      /* width: 150%; */
       /* padding: 1% 1% 1% 1%; */
   }
 
@@ -76,9 +77,10 @@ body {
   .p1-games, .p2-games{
       display: grid;
       background-color: var( --players-background);
-      height: 45vh;
-      grid-template-columns: repeat(3, 1fr );
-      grid-template-rows: repeat(6, 1fr );
+      height: 55vh;
+      /* grid-template-columns: repeat(3, 1fr ); */
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(6, 1fr);
       overflow: scroll;
       margin: 2% 1% 2% 1%;
       /* width: 60vh; */
@@ -90,11 +92,10 @@ body {
 
  .player-container{
     border-radius: 3px;
-    background-color: cornflowerblue;
-    /* padding: 5%; */
+    /* background-color: cornflowerblue; */
     margin: 7%;
-    /* height: 100px;
-    width: 100px; */
+    justify-self: center;
+    align-self: center;
 }
 
 .mini-game-board{
@@ -102,7 +103,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 30px);
     grid-template-rows: repeat(3, 30px);
-    grid-gap: 1px;
+    /* grid-gap: 1px; */
     width: 93px;
     align-content: center;
     
@@ -112,5 +113,126 @@ body {
     background-color: var( --background-color);
     height: 25px;
     width: 25px;
-    margin-top: 3px;
+    margin-top: 3px; */
+    align-self: center;
+    justify-self: center;
+}
+
+@media only screen and (min-width: 1500px){
+    .p1-games, .p2-games{
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 0px;
+        align-content: center;
+        height: 65vh;
+    }
+
+    .mini-gameboard{
+        grid-template-columns: repeat(3, 40px);
+        grid-template-rows: repeat(3, 40px);
+        grid-gap: 1px;
+        width: 5em;
+        height: 5em;
+    }
+
+    .cell {
+        cursor: pointer;
+        font-size: 3em;
+        background-color: var( --background-color);
+        height: 130px;
+        width: 130px;
+    }
+
+    .player-container {
+        /* border-radius: 3px; */
+        /* background-color: cornflowerblue; */
+        margin: 7%;
+        /* justify-self: center; */
+        /* align-self: center; */
+    }
+    .mini-game-board {
+        /* background: var( --bars-color); */
+        /* display: grid; */
+        grid-template-columns: repeat(3, 65px);
+        grid-template-rows: repeat(3, 65px);
+        /* grid-gap: 1px; */
+        width: 6em;
+        /* align-content: center; */
+        height: 6em;
+    }
+
+    .min-cell {
+        font-size: 23px;
+        background-color: var( --background-color);
+        height: 50px;
+        width: 50px;
+        margin-top: 3px;
+        */: ;
+        align-self: center;
+        justify-self: center;
+    }
+
+}
+
+@media only screen and (max-width: 900px){
+    .p1-games, .p2-games {
+        grid-template-columns: repeat(2, 1fr );
+    }
+}
+
+@media only screen and (max-width: 600px){
+    body{
+        width: 600px;
+    }
+
+    .game-board{
+        grid-gap: 3px;
+    }
+
+    .cell {
+        /* cursor: pointer; */
+        font-size: 1em;
+        /* background-color: var( --background-color); */
+        height: 80px;
+        width: 80px;
+    }
+
+    .p1-games, .p2-games {
+        background-color: var( --players-background);
+        height: 75vh;
+        grid-template-columns: repeat(1, 1fr );
+        overflow: scroll;
+        padding: 6%;
+    }
+
+    .player1-name,
+    .player2-name, 
+    .p1-win-count, 
+    .p2-win-count{
+        font-size: 25px;
+}
+
+@media only screen and (max-width: 400px){
+    body{
+        width: 400px;
+    }
+}
+
+@media only screen and (min-width: 1500px){
+    .p1-games, .p2-games{
+        grid-template-columns: repeat(3, 40px);
+        grid-template-rows: repeat(3, 40px);
+        grid-gap: 0px;
+        width: 115px;
+        align-content: center;
+    }
+
+    .mini-game-board {
+        background: var( --bars-color);
+        display: grid;
+        grid-template-columns: repeat(3, 40px);
+        grid-template-rows: repeat(3, 40px);
+        grid-gap: 1px;
+        width: 93px;
+        align-content: center;
+    }
 }
