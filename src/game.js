@@ -1,5 +1,4 @@
 // const Player = require('../src/player');
-
 class Game{
     constructor() {
         this.player1 = new Player ('1');

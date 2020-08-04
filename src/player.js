@@ -20,7 +20,6 @@ class Player{
     }
 
     retrieveWinsFromStorage(){
-        // console.log(JSON.parse(localStorage.getItem(this.name)) || {})
         return JSON.parse(localStorage.getItem(this.name)) || {};
     }
 }
