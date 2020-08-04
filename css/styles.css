@@ -76,7 +76,7 @@ body {
   .p1-games, .p2-games{
       display: grid;
       background-color: var( --players-background);
-      height: 85vh;
+      height: 45vh;
       grid-template-columns: repeat(3, 1fr );
       grid-template-rows: repeat(6, 1fr );
       overflow: scroll;

@@ -24,25 +24,16 @@ class Game{
         this.isGameActive = !this.isGameActive;
     }
 
-    declareWinner(player){
-        this.announcement = `${player.name} Wins`
-        // console.log(this.announcement)
-        player.saveWinsToStorage()
+    
+    declareWinner(winner){
+        this.deactivateGame()//
+        this.announcement = `${winner.name} Wins`
+        console.log('declareWinner()',this.announcement)
+        winner.winningBoards.unshift(this.gameBoard)
+        winner.saveWinsToStorage()
+        //save current board game
         // this.disableGame()
-        if(!this.isGameActive){
-            setTimeout(() => {
-                // alert('5 seconds')
-                location.reload();
-                // this.resetGame()
-            }, 2000);
-        }
-    }
-
-    checkWin(){
-        if(this.gameTurns >= 5){
-            console.log('check for win')
-            this.checkForVictory()
-        }
+        this.resetGame()
     }
 
     // game Logic
@@ -55,30 +46,35 @@ class Game{
                 var secondIndex = this.gameBoard[this.winningScenarios[i][j + 1]]
                 var thirdIndex = this.gameBoard[this.winningScenarios[i][j + 2]]
                 if(winningIndex === secondIndex && secondIndex === thirdIndex && winningIndex !== ''){
-                    //save current board game
-                    currentTurn.winningBoards.unshift(this.gameBoard)
-                    // this.deactivateGame()
                     currentTurn.addWins()
-                    this.deactivateGame()
                     this.declareWinner(currentTurn)
                     return true
                 }
             }
         }
-
-    }     
+    }    
+    
+    checkWin(){
+        if(this.gameTurns >= 5){
+            console.log('check for win')
+            this.checkForVictory()
+        }
+    }
 
     checkForDraws() { //check for draws, if it is full it is a draw
         if (!this.gameBoard.includes('') ){
+            this.deactivateGame()//
             this.announcement = 'It is a DRAW';
+            this.resetGame()
             console.log(this.announcement )
         }
 
     }
 
-    // checkForReadiness(){ //check for game readiness
-    //     return !this.gameBoard.includes('') ? false : true
-    // }
+    checkForReadiness(){ //check for game readiness
+        this.announcement = 'ARE YOU READY'
+        return !this.gameBoard.includes('') ? false : true
+    }
 
     findCurrentTurn() { 
         return this.gameTurns %2 === 0 ? this.player2 : this.player1;
@@ -133,29 +129,29 @@ class Game{
     }
 
     insertToken(position){
-        var currentTurn = this.findCurrentTurn()
+        var currentPostion = this.findCurrentTurn()
         // console.log(this.findCurrentTurn())
-        if (this.gameBoard[position] !== '' ||  this.checkForVictory() === true){ //=> makes sure not to over ride a position
+        if (this.gameBoard[position] !== ''){ //=> makes sure not to over ride a position
             return false;
         } 
-        if (this.gameBoard[position] === '' && currentTurn === this.player2) {
+        if (this.gameBoard[position] === '' && currentPostion  === this.player2 && this.isGameActive === true) {
             this.gameTurns++
             return this.gameBoard[position] = '🐔';
         } 
-        if ((this.gameBoard[position] === '' && currentTurn === this.player1)){
+        if ((this.gameBoard[position] === '' && currentPostion === this.player1 && this.isGameActive === true)){
             this.gameTurns++
             return this.gameBoard[position] = '👾';
         }
-        this.checkWin() //check for a winnning condition
     }
     
     resetGame(){
-            //reset the board
             this.gameBoard = ['', '', '', '', '', '', '', '', '']
-            //this.announcement 
-            this.announcement = 'Game will restart in 5 sec.'
-            console.log(this.announcement)
-            //get the information from estorage 
+            console.log('Game will restart in 2 sec.')
+            if(!this.isGameActive){
+                setTimeout(function() {
+                    location.reload();
+                }, 1000);
+            }
         return this.announcement;
     }
 }
