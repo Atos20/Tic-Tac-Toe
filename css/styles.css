@@ -16,6 +16,7 @@ body {
     flex-direction: row;
     height: 100vh;
     text-align: center;
+    vertical-align: middle;
   }
 
   .center-section{
@@ -24,7 +25,7 @@ body {
     flex-direction: column;
     height: 100%;
     padding: 3%;
-    width: 70%;
+    width: 30%;
   }
 
   .game-name{
@@ -125,8 +126,8 @@ body {
     }
 
     .p1-games, .p2-games {
-        grid-template-columns: repeat(2, 1fr); 
-        padding-top: 13%;  
+        grid-template-columns: repeat(3, 1fr); 
+        padding-top: 3%;  
     }
 
     .mini-game-board {
@@ -156,6 +157,7 @@ body {
         grid-gap: 0px;
         align-content: center;
         height: 65vh;
+        padding-top: 13%;
     }
 
     .mini-gameboard{
@@ -188,8 +190,8 @@ body {
     .min-cell {
         font-size: 1.5em;
         background-color: var( --background-color);
-        height: 50px;
-        width: 50px;
+        height: 1.2em;
+        width: 1.2em;
         margin-top: 3px;
         align-self: center;
         justify-self: center;
@@ -197,21 +199,46 @@ body {
 
 }
 
-@media only screen and (max-width: 900px){
+@media only screen and (max-width: 1000px){
+    .game-board{
+        grid-template-columns: repeat(3, 2em);
+        grid-template-rows: repeat(3, 2em );
+        grid-gap: 3px;
+    }
+
+    .cell {
+        /* cursor: pointer; */
+        font-size: 64px;
+        background-color: var( --background-color);
+        height: 1em;
+        width: 1em;
+    }
+
     .p1-games, .p2-games {
         grid-template-columns: repeat(2, 1fr );
     }
 }
 
-@media only screen and (max-width: 600px){
-    .game-board{
+@media only screen and (max-width: 700px){
+    /* .game-board{
         grid-gap: 3px;
+    } */
+
+    .game-board{
+        background: var(--bars-color);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr );
+        grid-template-rows: repeat(3, 1fr );
+        grid-gap: 6px;
+        justify-self: center;
+        justify-items: center;
+    
     }
 
     .cell {
         font-size: 1em;
-        height: 80px;
-        width: 80px;
+        height: 64px;
+        width: 64px;
     }
 
     .p1-games, .p2-games {
@@ -219,6 +246,7 @@ body {
         height: 75%;
         grid-template-columns: repeat(1, 1fr );
         padding: 6%;
+        width: 80%;
     }
 
     .player1-name,
@@ -228,8 +256,41 @@ body {
         font-size: 25px;
 }
 
-@media only screen and (max-width: 400px){
-    body{
-        width: 400px;
+.center-section {
+    width: 36%;
+}
+
+@media only screen and (max-width: 532px){
+    .main-container {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        grid-template-rows: 45%, 55%;
+        text-align: center;
+        vertical-align: middle;
     }
+
+    .left-section, .rigth-section{
+        width: 100%;
+        justify-content: end;
+        align-items: center;
+        position: relative;
+        height: 120%;
+    }
+
+    .center-section{
+        grid-area: 1/ span 2;
+        width: 95%;
+    }
+
+    .p1-games, .p2-games {
+        padding: 3%;
+    }
+
+    /* .player1-name,
+    .player2-name, 
+    .p1-win-count, 
+    .p2-win-count{
+        font-size: 25px;
+    }
+     */
 }
