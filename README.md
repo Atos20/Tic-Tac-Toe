@@ -47,21 +47,21 @@ The goal of this project was to create a tic-tac-toe game between `player1` and 
 
   #### Take 1
 
-* When the player places a token on the board it cannot longer place the same token on another cell. On the header it also signals which player is next, allowing this way a visual representation of the game flow.
+* When the player places a token on the board it cannot longer place the same token on another cell. The header displays which player is next, allowing this way a visual representation of the game flow.
 
   <img src="https://media.giphy.com/media/TdR4EyEwFhzAxC1D5I/giphy.gif" alt="when the player places a tooken on the game board the tile shows a phrase indicating which turn is next. There are only two tokens that can have been placed on the game board a white chicken facing left and a purpled pixeled alien from a video game" height=auto width=75%/>
 
  #### Take 2
 
-*  When a winner is found the header displays who the winner was by changing the text of the header to indicate the winner. The player's win count also increment depending on which player won the game  
+*  When a winner is found the header displays who the winner was by changing the text. The player's win count also incremen so the player can keep track of the wins.  
 
-  <img src="https://media.giphy.com/media/SX0BeAZgPO8Hp65eoG/giphy.gif" alt="When a winner is found the header displays who the winner was by changing the text to indicate who the winner is" height=auto width=75%/>
+  <img src="https://media.giphy.com/media/SX0BeAZgPO8Hp65eoG/giphy.gif" alt="When a winner is found the header displays who the winner was by changing the text" height=auto width=75%/>
   
   #### Take 3
 
 * Saving player winning boards to the player's section. After a winner is declared the board that the winner just wons is saved and moved to the players section. These boards are also saved to local storage so they can be retrieved after the page reloads.
 
-  <img src="https://media.giphy.com/media/JR0fPPQtaGXNLXClO0/giphy.gif" alt="When a winner is found the header displays who the winner was by changing the text to indicate who the winner is" height=auto width=75%/>
+  <img src="https://media.giphy.com/media/JR0fPPQtaGXNLXClO0/giphy.gif" alt="Saving player winning boards to the player's section" height=auto width=75%/>
 
  #### Take 4
 
@@ -70,6 +70,7 @@ The goal of this project was to create a tic-tac-toe game between `player1` and 
  <img src="https://media.giphy.com/media/idLLatfjGJGfXdNPmh/giphy.gif" alt="During the game if a wiinner is not found a message is vissible indicating the status of the game, and in this case it displays the message 'It is a draw.'" height=auto width=75%/>
 
  #### Take 5
+ 
 * After completing the functionality of the game the next iteration I worked on was the `CSS` responsiveness. Here we can appreciate how the application behave at different screen sizes.
 
   <img src="https://media.giphy.com/media/LRNtVOV5u6STIPIrFB/giphy.gif" alt="" height=auto width=75%/>
