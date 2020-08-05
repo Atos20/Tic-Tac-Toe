@@ -65,8 +65,8 @@ When the player places a token on the board it cannot longer place the same toke
 
  #### Take 3
 
-*
- <img src="" alt="" height=auto width=75%/>
+* During the game if a wiinner is not declared a message is vissible indicating the status of the game, and in this case it displays the message 'It is a draw.'
+ <img src="https://media.giphy.com/media/idLLatfjGJGfXdNPmh/giphy.gif" alt="" height=auto width=75%/>
 
 
 
