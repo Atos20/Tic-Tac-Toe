@@ -73,9 +73,9 @@ When the player places a token on the board it cannot longer place the same toke
 
 
  #### Take 4
-* 
+* After completing the functionality of the game the next iteration I worked on was the `CSS` responsiveness. Here we can appreciate how the application behave at different screen sizes.
 
-  <img src="" alt="" height=auto width=75%/>
+  <img src="https://media.giphy.com/media/LRNtVOV5u6STIPIrFB/giphy.gif" alt="" height=auto width=75%/>
 
 ## Project directions
 
