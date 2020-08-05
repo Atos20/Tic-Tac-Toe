@@ -11,20 +11,20 @@ window.onload = startGame();
 gameBoard.addEventListener('click', updateBoard);
 
 function startGame(){
-  currentGame = new Game()
-  updateWins()
-  retrievePLayerBoards(currentGame.player1)
-  retrievePLayerBoards(currentGame.player2)
+  currentGame = new Game();
+  updateWins();
+  retrievePLayerBoards(currentGame.player1);
+  retrievePLayerBoards(currentGame.player2);
 }
 
 function updateBoard(event){
-  var currentPlayer = currentGame.findCurrentTurn()
+  var currentPlayer = currentGame.findCurrentTurn();
   var cellPosition = +event.target.id
-    currentGame.insertToken(cellPosition)
+    currentGame.insertToken(cellPosition);
     gameCells[cellPosition].innerHTML = currentGame.gameBoard[cellPosition]
-    findWinner()
-    gameStatus(currentPlayer)
-    updateWins()
+    findWinner();
+    gameStatus(currentPlayer);
+    updateWins();
 }
 
 function updateWins(){
@@ -38,7 +38,7 @@ function retrievePLayerBoards(currentPlayer){
   if(+currentPlayer.id === 1){
     playerBoard = document.querySelector('.p1-games');
   } else {
-    playerBoard = document.querySelector('.p2-games')
+    playerBoard = document.querySelector('.p2-games');
   }
   playerBoard.innerHTML = '';
   for (let i = 0; i < storedBoards.length; i++) {
@@ -63,11 +63,10 @@ function retrievePLayerBoards(currentPlayer){
 }
 
 function findWinner(){
-  currentGame.checkWin()
+  currentGame.checkWin();
 }
 
 function gameStatus(currentPlayer){
-  console.log(currentGame.announcement)
   if (+currentPlayer.id === 1){
     mainHeader.innerHTML = `It's 🐔's turn`;
   }
@@ -75,7 +74,6 @@ function gameStatus(currentPlayer){
     mainHeader.innerHTML = `It's 👾's turn`;
   }
   if (!currentGame.isGameActive){
-    console.log(currentPlayer)
-    mainHeader.innerHTML = currentGame.announcement
+    mainHeader.innerHTML = currentGame.announcement;
   }
 }
