@@ -6,11 +6,11 @@
 
 ## Context
 
-Tic tac toe, is a project that required understanding and use of classes to create a fully functional game using the cosole. This was challenging but helped me to deepening my knowledge in Object Oriented Programming. This application is the last project of the first Module of Turing School of Software and Design.
+Tic tac toe, is a project that required the understanding and use of classes to create a fully functional game using the cosole. This was challenging but helped me to deepened my knowledge in Object Oriented Programming. This application is the last project of the first Module of Turing School of Software and Design.
 
 With no comps provided by the instructors, I created a `project bord` to organize, plan and keep track of the project's evolution. It was very helpful to make use the `milestones` and `issues` to make sure I was working to finish each iteration and have a clear vision of where I wanted to be at the end of the day. This has been mianly one of my biggest areas of improvement that I am making sure to practice daily.
 
-The goal of this project was to create a tic-tac-toe game between player1 and player 2.
+The goal of this project was to create a tic-tac-toe game between `player1` and `player 2`.
 
 #### Technologies used:
     * HTML
@@ -31,7 +31,7 @@ The goal of this project was to create a tic-tac-toe game between player1 and pl
 - Being able to work through the logic of the game
 - Set up the mocha and chai libraries to implement unit testing
 - Finish the overall HTML and CSS structure
-- ~Responsive design~
+- Responsive design
 - Having a functional game using the console
 - Using the project board *milestones, issues, labels and tickets* to keep track of my progress
 - Use of the GitHub milestones and issues to structure my project
@@ -51,7 +51,7 @@ The goal of this project was to create a tic-tac-toe game between player1 and pl
 
 When the player places a token on the board it cannot longer place the same token on another cell. On the header it also signals which player is next, allowing this way a visual representation of the game flow.
 
-  <img src="" alt="when the player places a tooken on the game board the tile shows a phrase indicating which turn is next. There are only two tokens that can have been placed on the game board a white chicken facing left and a purpled pixeled alien from a video game" height=auto width=75%/>
+  <img src="https://media.giphy.com/media/TdR4EyEwFhzAxC1D5I/giphy.gif" alt="when the player places a tooken on the game board the tile shows a phrase indicating which turn is next. There are only two tokens that can have been placed on the game board a white chicken facing left and a purpled pixeled alien from a video game" height=auto width=75%/>
 
  #### Take 2
 
@@ -61,7 +61,7 @@ When the player places a token on the board it cannot longer place the same toke
 
 
 
-  <img src="" alt="When a winner is found the header displays who the winner was by changing the text to indicate who the winner is" height=auto width=75%/>
+  <img src="https://media.giphy.com/media/SX0BeAZgPO8Hp65eoG/giphy.gif" alt="When a winner is found the header displays who the winner was by changing the text to indicate who the winner is" height=auto width=75%/>
 
  #### Take 3
 
