@@ -9,7 +9,11 @@
  
 ### What are the relevant tickets?  
  
-### Screenshots (if appropriate)  
+### Screenshots (if appropriate) 
+
+Original        |  Updated
+:--------------:|:------------------:
+** original **  | ** updated screenshot **
  
 #### Questions: 
 
