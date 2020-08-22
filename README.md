@@ -92,5 +92,4 @@ If you want to contribute
 >    - create a new pull request!
 
 ### Project Manager
-
 [Scott Ertmer](https://github.com/sertmer)
